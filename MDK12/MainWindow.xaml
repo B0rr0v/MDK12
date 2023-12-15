@@ -1,0 +1,159 @@
+﻿<Window x:Class="MDK12.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MDK12"
+        mc:Ignorable="d"
+        Title="Практическая работа №12" Height="420" Width="800" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Window.ContextMenu>
+        <ContextMenu>
+            <MenuItem Header="Выход" Click="Exit" ></MenuItem>
+            <MenuItem Header="Очистить 1-ую" Click="Clear1" ></MenuItem>
+            <MenuItem Header="Очистить 2-ую" Click="Clear2" ></MenuItem>
+            <MenuItem Header="О программе"  Click="About"></MenuItem>
+        </ContextMenu>
+    </Window.ContextMenu>
+    <Grid Height="440" VerticalAlignment="Top" Margin="0,-33,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="33"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="34"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StatusBar Grid.Row="5">
+
+            <TextBlock x:Name="time" Text=""></TextBlock>
+            <Separator></Separator>
+            <TextBlock x:Name="data" Text=""></TextBlock>
+            <Separator></Separator>
+            <TextBlock Text="Задача 5"></TextBlock>
+        </StatusBar>
+
+        <Menu Grid.Row="1">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Выход" Click="Exit">
+
+                    <MenuItem.Icon>
+                        <Image Source="img\TMP.ico" Height="19" Width="34"></Image>
+                    </MenuItem.Icon>
+
+                </MenuItem>
+            </MenuItem>
+
+            <MenuItem Header="Справка" >
+                <MenuItem Header="О программе" Click="About">
+                    <MenuItem.Icon>
+                        <Image Source="img\Default Icon.ico" Height="19" Width="34"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Задачи" >
+                <MenuItem Header="Выполнить задачу 1" Click="First">
+                    <MenuItem.Icon>
+                        <Image Source="img\Desktop.ico" Height="19" Width="34"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Выполнить задачу 2" Click="Second">
+                    <MenuItem.Icon>
+                        <Image Source="img\Desktop.ico" Height="19" Width="34"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Очистить первую" Click="Clear1">
+                    <MenuItem.Icon>
+                        <Image Source="img\clear.ico" Height="19" Width="34"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Очистить вторую" Click="Clear2">
+                    <MenuItem.Icon>
+                        <Image Source="img\clear.ico" Height="19" Width="34"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <TabControl Grid.Row="2" Grid.RowSpan="3">
+            <TabItem Header="Окно1">
+                <Grid Margin="0,0,0,-6">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>
+                    <GroupBox Header="Исходные данные" HorizontalAlignment="Left" Height="263" Margin="20,39,0,0" VerticalAlignment="Top" Width="327">
+                        <Grid>
+                            <TextBox HorizontalAlignment="Left" Height="32" Margin="10,27,0,0" ToolTip="Поле ввода стороны а" TextWrapping="Wrap" x:Name="tb1"  VerticalAlignment="Top" Width="168" TextChanged="tb1_TextChanged"/>
+                            <TextBox HorizontalAlignment="Left" Height="32" Margin="10,162,0,0" TextWrapping="Wrap" ToolTip="Поле ввода стороны c" x:Name="tb3"  VerticalAlignment="Top" Width="168" TextChanged="tb3_TextChanged"/>
+                            <TextBox HorizontalAlignment="Left" Height="32" Margin="10,89,0,0" TextWrapping="Wrap" x:Name="tb2"  ToolTip="Поле ввода стороны b" VerticalAlignment="Top" Width="168" TextChanged="tb2_TextChanged"/>
+                            <Label Content="A" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top" Width="168"/>
+                            <Label Content="B" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Width="168"/>
+                            <Label Content="C" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top" Width="168"/>
+
+                        </Grid>
+                    </GroupBox>
+
+                    <GroupBox Header="Результат" HorizontalAlignment="Left" Height="263" Margin="42,39,0,0" VerticalAlignment="Top" Width="327" Grid.Column="1">
+                        <Grid>
+                            <TextBox HorizontalAlignment="Left" Height="32" Margin="10,27,0,0" IsReadOnly = "True" TextWrapping="Wrap" ToolTip="Поле вывода площади" x:Name="tb4"  VerticalAlignment="Top" Width="168"/>
+                            <TextBox HorizontalAlignment="Left" Height="32" Margin="10,88,0,0" IsReadOnly = "True" TextWrapping="Wrap" x:Name="tb5" ToolTip="Поле вывода объема" VerticalAlignment="Top" Width="168" RenderTransformOrigin="0.494,1.688"/>
+                            <Label Content="S" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top" Width="168"/>
+                            <Label Content="V" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top" Width="168"/>
+                            <Button Content="Рассчитать"  Click="First" HorizontalAlignment="Left" Margin="216,63,0,0" VerticalAlignment="Top" Width="75"/>
+
+                        </Grid>
+                    </GroupBox>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Окно2">
+                <Grid Margin="0,11,0,-6" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>
+
+                    <GroupBox Header="Исходные данные" HorizontalAlignment="Left" Height="263" Margin="20,39,0,0" VerticalAlignment="Top" Width="327">
+                        <Grid>
+                            <TextBox HorizontalAlignment="Left" Height="32" ToolTip="Поле ввода двухзначного числа" Margin="65,93,0,0" x:Name="tb6"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="168" TextChanged="tb6_TextChanged"/>
+                            <Label Content="Число" HorizontalAlignment="Left" Margin="65,62,0,0" VerticalAlignment="Top" Width="168"/>
+
+                        </Grid>
+                    </GroupBox>
+
+                    <GroupBox Header="Результат" HorizontalAlignment="Left" Height="263" Margin="42,39,0,0" VerticalAlignment="Top" Width="327" Grid.Column="1">
+                        <Grid>
+                            <TextBox HorizontalAlignment="Left" IsReadOnly="True" Height="32" Margin="10,27,0,0"  ToolTip="Поле вывода суммы" TextWrapping="Wrap" x:Name="tb7"  VerticalAlignment="Top" Width="168"/>
+                            <TextBox HorizontalAlignment="Left" IsReadOnly="True"  Height="32" Margin="10,88,0,0" TextWrapping="Wrap" ToolTip="Поле вывода произведения" x:Name="tb8"  VerticalAlignment="Top" Width="168" RenderTransformOrigin="0.494,1.688"/>
+                            <Label Content="Сумма" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top" Width="168"/>
+                            <Label Content="Произведение" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top" Width="168"/>
+                            <Button Content="Рассчитать" Click="Second" HorizontalAlignment="Left" Margin="218,63,0,0" VerticalAlignment="Top" Width="75"/>
+                        </Grid>
+                    </GroupBox>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+
+
+
+
+
+    </Grid>
+</Window>
